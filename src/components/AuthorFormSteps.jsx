@@ -1,5 +1,4 @@
-// src/components/AuthorFormSteps.jsx – versão completa com correção do loop
-/* eslint-disable react/prop-types */
+
 import React, { useState, useEffect, useMemo } from 'react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
