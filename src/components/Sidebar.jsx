@@ -33,6 +33,12 @@ const Sidebar = () => {
       permission: PERMISSIONS.READ_AUTHOR
     },
     {
+      title: 'Relatórios',
+      icon: FileText,
+      path: '/reports',
+      permission: PERMISSIONS.READ_AUTHOR
+    },
+    {
       title: 'Usuários',
       icon: Users,
       path: '/users',

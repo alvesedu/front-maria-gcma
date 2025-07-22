@@ -83,7 +83,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
  const login = async ({ email, senha }) => {
-  console.log("Enviando login com:", email, senha);
+  //console.log("Enviando login com:", email, senha);
   try {
     const response = await apiService.login({ email, senha });
 

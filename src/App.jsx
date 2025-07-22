@@ -10,6 +10,7 @@ import Victims from "./pages/Victims";
 import Authors from "./pages/Authors";
 import AuthorQuestionnaires from "./pages/AuthorQuestionnaires";
 import VictimQuestionnaires from "./pages/VictimQuestionnaires";
+import Reports from "./pages/Reports";
 import "./App.css";
 
 // Rota pública (bloqueia acesso se já estiver autenticado)
@@ -122,6 +123,14 @@ function AppContent() {
             element={
               <ProtectedRoute>
                 <VictimQuestionnaires />
+              </ProtectedRoute>
+            }
+          />
+           <Route
+            path="/Reports"
+            element={
+              <ProtectedRoute>
+                <Reports />
               </ProtectedRoute>
             }
           />

@@ -146,6 +146,54 @@ class ApiService {
     const response = await api.delete(`/vquestionnaires/${id}`);
     return response.data;
   }
+
+   /** Retorna um array [{ _id: 'YYYY-MM', count: Number }, …] */
+  async getVictimsPerMonth() {
+    const res = await api.get('/reports/victims-per-month');
+    return res.data;
+  }
+
+  /** Retorna um array [{ _id: 'FÍSICA', count: Number }, …] */
+  async getViolenceTypesBreakdown() {
+    const res = await api.get('/reports/violence-types');
+    return res.data;
+  }
+
+  /** Retorna um array [{ _id: 'ANANINDEUA', count: Number }, …] */
+  async getAuthorsByMunicipality() {
+    const res = await api.get('/reports/authors-by-municipality');
+    return res.data;
+  }
+
+   async getAvgChildren() {
+    const res = await api.get('/reports/avg-children');
+    return [
+      { category: 'Vítimas', avg: res.data.victimsAvg || 0 },
+      { category: 'Autores', avg: res.data.authorsAvg || 0 },
+    ];
+  }
+
+  async getHousingIncome() {
+    const res = await api.get('/reports/housing-income');
+    return res.data;
+  }
+
+  async getAgeDistribution() {
+    const res = await api.get('/reports/age-distribution');
+    const allRanges = new Set([
+      ...res.data.victims.map(d => d.label),
+      ...res.data.authors.map(d => d.label),
+    ]);
+    return Array.from(allRanges).map(range => {
+      const v = res.data.victims.find(d => d.label === range);
+      const a = res.data.authors.find(d => d.label === range);
+      return {
+        range,
+        victims: v?.count || 0,
+        authors: a?.count || 0,
+      };
+    });
+   }
 }
 
 export default new ApiService();

@@ -40,10 +40,10 @@ const Login = () => {
     }
 
     const result = await login(formData);
-    console.log('Resultado do login:', result);
+    //console.log('Resultado do login:', result);
 
     if (result.success) {
-      console.log('Login bem-sucedido. Redirecionando...');
+      //console.log('Login bem-sucedido. Redirecionando...');
       navigate('/dashboard');
     } else {
       setError(result.error || 'Erro ao fazer login');
